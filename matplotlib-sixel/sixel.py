@@ -16,40 +16,15 @@ import matplotlib
 from matplotlib._pylab_helpers import Gcf
 from subprocess import Popen, PIPE
 
-from .xterm import xterm_pixels
-
 from matplotlib.backends.backend_agg import new_figure_manager, FigureCanvasAgg
 new_figure_manager  # for check
 
 
-def resize_fig(figure):
-    """ resize figure size, so that it fits into the terminal
-
-    Checks the width and height
-    Only makes the figure smaller
-
-    """
-    dpi = figure.get_dpi()
-    size = figure.get_size_inches()  # w, h
-    pixel_size = size * dpi
-
-    pixel_factor = pixel_size / xterm_pixels()
-
-    factor = max(max(pixel_factor), 1)
-
-    size /= factor
-
-    figure.set_size_inches(size)
-    print(size)
-
-
 def display(figure):
     """ Display figure on stdout as sixel graphic """
-
-    resize_fig(figure)
-
+    print()
     p = Popen(["convert", "-colors", '16', 'png:-', 'sixel:-'], stdin=PIPE)
-    figure.savefig(p.stdin, format='png')
+    figure.savefig(p.stdin, bbox_inches="tight", format='png', transparent=True, pad_inches=0.)
     p.stdin.close()
     p.wait()
 
