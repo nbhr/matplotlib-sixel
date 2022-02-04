@@ -4,7 +4,7 @@ Matplotlib-sixel backend
 A matplotlib backend which outputs sixel graphics onto the terminal.
 The code is inspired by the ipython-notebook matplotlib backend.
 
-![](./demo.gif)
+![](./demo.png)
 
 Dependencies
 ------------
