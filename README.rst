@@ -27,11 +27,11 @@ Configuration
 the backend has to be altered. Either in your python session with::
 
     import matplotlib
-    matplotlib.use('module://matplotlib-sixel')
+    matplotlib.use('module://sixel')
 
 or in your ``matplotlibrc`` file::
 
-    backend: module://matplotlib-sixel
+    backend: module://sixel
 
 To get the colors in the demo above, you can copy
 `this matplotlibrc <./matplotlibrc>`_ and make it your own.

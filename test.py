@@ -2,7 +2,7 @@
 
 import matplotlib
 
-matplotlib.use('module://matplotlib-sixel')
+matplotlib.use('module://sixel')
 
 from pylab import *
 
