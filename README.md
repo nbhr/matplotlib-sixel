@@ -4,6 +4,8 @@ Matplotlib-sixel backend
 A matplotlib backend which outputs sixel graphics onto the terminal.
 The code is inspired by the ipython-notebook matplotlib backend.
 
+![](./demo.gif)
+
 Dependencies
 ------------
 
@@ -19,11 +21,13 @@ Installation
 Usage
 -----
 
+the backend has to be altered. Either in your python session with:
 
     import matplotlib
-    import numpy
-
     matplotlib.use('module://matplotlib-sixel')
-    from pylab import *
-    plt.plot(sin(arange(100) / 10))
-    show()
+
+or in your `matplotlibrc` file:
+
+    backend: module://matplotlib-sixel
+
+With everything in place, plotting should now be sent to terminal output.
