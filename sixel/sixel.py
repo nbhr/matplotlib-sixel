@@ -22,9 +22,20 @@ new_figure_manager  # for check
 
 def display(figure):
     """ Display figure on stdout as sixel graphic """
-    print()
-    p = Popen(["convert", "-colors", '16', 'png:-', 'sixel:-'], stdin=PIPE)
-    figure.savefig(p.stdin, bbox_inches="tight", format='png', transparent=True, pad_inches=0.)
+
+    rcp = matplotlib.pyplot.rcParams
+    if 'sixel.colors' in rcp:
+        colors = str(rcp['sixel.colors'])
+    else:
+        colors = '256'
+
+    if 'sixel.transparent' in rcp:
+        transparent = bool(rcp['sixel.transparent'])
+    else:
+        transparent = False
+
+    p = Popen(["convert", "-colors", colors, 'png:-', 'sixel:-'], stdin=PIPE)
+    figure.savefig(p.stdin, bbox_inches="tight", format='png', transparent=transparent, pad_inches=0.)
     p.stdin.close()
     p.wait()
 
