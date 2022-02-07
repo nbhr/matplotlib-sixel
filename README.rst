@@ -1,3 +1,30 @@
+----
+
+Changes from the upstream
+-------------------------
+
+This is customized for `WSLtty <https://github.com/mintty/wsltty>`_ (2022-02-07) which runs on WSL2 with SIXEL support.
+
+* disabled transparency: it makes rendering better in WSLtty.
+* 256 colors: originally 16 colors.
+* added ``sixel.transparency`` and ``sixel.colors`` keys in ``plt.rcParams``.
+
+
+As a result, you get
+
+1. plot with white background by default,
+2. plot with black background with ``plt.style.use('dark_background')``, and
+3. plot as below with the customized `matplotlibrc <matplotlibrc>`_ installed in ``~/.config/matplotlib/``.
+
+You can try this backend by
+
+::
+
+    $ python3 -m pip install .
+    
+----
+
+
 Matplotlib-sixel backend
 ========================
 
